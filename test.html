@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Min Første Side</title>
+    <style>
+        /* Styling til sidens baggrund */
+        body {
+            background-color: #f0f0f0; /* En lysgrå baggrundsfarve */
+            font-family: sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .flex-container {
+            display: flex;
+            flex-direction: column; /* Placerer containere under hinanden */
+            gap: 20px; /* Skaber mellemrum mellem containerne */
+            max-width: 600px;
+            width: 100%;
+        }
+
+        /* Styling til boksen */
+        .container-box {
+            background-color: #ffffff; 
+            padding: 40px;
+            border-radius: 15px; 
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+            text-align: center;
+	width: 90%;
+        }
+
+        /* Styling til knappen */
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            text-decoration: none;
+            outline: none;
+            color: #fff;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 4px #999;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+
+        .button:active {
+            background-color: #0056b3;
+            box-shadow: 0 2px #666;
+            transform: translateY(2px);
+        }
+
+        p {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+  <div class="flex-container">
+    <div class="container-box">
+        <p>hej med dig</p>
+        <a href="https://www.google.com" class="button">Klik her</a>
+    </div>
+    <div class="container-box">
+        <p>hej med dig</p>
+        <a href="https://www.google.com" class="button">Klik her</a>
+    </div>
+    <div class="container-box">
+        <p>hej med dig</p>
+        <a href="https://www.google.com" class="button">Klik her</a>
+    </div>
+  </div>
+
+</body>
+</html>
