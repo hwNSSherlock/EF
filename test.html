@@ -1,34 +1,186 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Min Første Side</title>
+    <title>Henrik Weiland's Blog</title>
     <style>
+    :root {
+		--ff-bgcolor1: white;
+		--ff-bgcolor2: #021938;
+		--ff-bgcolor3: darkorange;
+		--ff-bgcolor4: #f9f9f9;
+		--ff-bgcolor5: yellow;
+		--ff-bgcolor6: #c85555;
+		--ff-bgcolor7: #323232;
+		--ff-bgcolor8: #DCDCDB;
+		--ff-bgcolor9: #F5F5F5;
+		--ff-bgcolor10: #00a9ac;
+		--ff-bgcolor11: #009163;
+		--ff-bgcolor12: #89CFF0;
+		--ff-textcolor1: #021938;
+		--ff-textcolor2: darkorange;
+		--ff-textcolor3: white;
+		--ff-textcolor4: black;
+		--ff-textcolor5: #AAB4C3;
+    } 
+
+	*, :before, :after, html {box-sizing: border-box;}
+	
+	html {
+    		scroll-behavior: smooth;
+	}
+
         body {
             background-color: #f0f0f0; 
             font-family: sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+	    line-height: 1.6rem;
             height: 100vh;
-            margin: 0;
+            margin-left: 3%;
+	    margin-right: 1%;
+	    margin-top: 40px;
+	    overflow: hidden; 
         }
+
+	.content-container {
+    		display: none;
+    		height: 100vh;
+    		gap: 20px;
+	}
+
+	.main-content {
+    		flex: 3;
+    		overflow: auto; 
+	}
+
+	.sidebar {
+    		flex: 1;
+		overflow: auto;
+		line-height: 1.2;
+	}
+
+	.sidebar a {
+    		text-decoration: none;
+    		color: darkblue;
+	}
+	.sidebar li {
+		padding-bottom: 6px;
+	}
+
+	.accordian-container {
+		background-color: #f0f0f0;
+		color: var(--ff-textcolor4);
+		padding: 1rem 1rem;
+		border-radius: 10px;
+		box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+		z-index: 12;
+		position: relative;
+  		display: flex; 
+  		flex-direction: column;
+  		gap: 0.5rem; 
+		flex: 3;
+    		overflow: auto; 
+	}
+	
+	summary {
+		border-top: 0px solid #ccc;
+		padding: 12px 16px;
+		font-weight: bold;
+		cursor: pointer;
+		list-style: none;
+		outline: none;
+		position: relative;
+		padding-right: 30px;
+		text-transform: uppercase;
+		padding-bottom: 12px;
+		color: var(--ff-textcolor1);
+		border-radius: 12px;
+		background-color: lightblue;
+	}
+	summary::-webkit-details-marker {
+		display: none;
+	}
+
+	summary .summarydate {
+  		position: absolute;
+  		right: 56px; 
+  		top: 50%;
+  		transform: translateY(-50%);
+	}
+
+	summary .arrow {
+		content: "";
+		position: absolute;
+		right: 16px;
+		top: 50%;
+		transform: translateY(-50%) rotate(0deg);
+		border: solid #021938;
+		border-width: 0 2px 2px 0;
+		padding: 5px;
+		transform: translateY(-50%) rotate(45deg); /* nedpil */
+		transition: transform 0.2s ease;
+	}
+	.details-container {
+		padding-right: 30px;
+		padding-top: 20px;
+		padding-bottom: 20px;
+	}
+	details {
+		background-color: white;
+		border-radius: 12px;
+		
+	}
+	details[open] summary {
+		background-color: var(--ff-bgcolor12);
+	}
+	details details {
+		margin-left: 10px;
+		padding-left: 10px;
+	}
+	details p, details h4 {
+		padding-left: 20px;
+		padding-top: 8px;
+	}
+
+	details[open] summary .arrow {
+		transform: translateY(-50%) rotate(-135deg); 
+	}
+	details:last-of-type > summary {
+		border-bottom: 0px solid #ccc;
+	}
+	details li p {padding-left: 0px;}
+
+	details h4 {}
+
+	a.button-link {
+		display: inline-block;
+		background-color: #f57c00; 
+		color: white;
+		padding: 5px 50px;
+		text-decoration: none;
+		border-radius: 12px;
+		font-weight: bold;
+		transition: background-color 0.3s ease;
+	}
+
+	a.button-link:hover {
+		background-color: #ef6c00; 
+	}
 
         .flex-container {
             display: flex;
             flex-direction: column; 
             gap: 20px; 
-            max-width: 600px;
+            max-width: 1200px;
             width: 100%;
         }
 
         /* Styling til boksen */
         .container-box {
             background-color: #ffffff; 
-            padding: 40px;
+            padding: 20px;
             border-radius: 15px; 
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
             text-align: left;
-			width: 90%;
+	    width: 100%;
         }
 
         /* Styling til knappen */
@@ -56,36 +208,271 @@
             transform: translateY(2px);
         }
 
-        p {
-            margin-bottom: 20px;
+        p, ul {
+            margin-bottom: 5px;
+	    margin-top: 0px;
         }
+	ul > li { padding-bottom: 4px;}
     </style>
 </head>
 <body>
 
-<p>Hvis du interesserer dig lidt for sandheden omkring ejerforeningen, er du altid velkommen til at se med på dette link</p>
-<p>Gem linket til dette dokument, da du nok ikke skal forvente, at linket vil få lov at hænge i opgangene…</p>
-<p>Nogle beboere synes tilsyneladende, at det er forkert at informere om fejl og ulovligheder i vores regnskaber, da opslag om emnet er blevet fjernet.</p>
-<p>For at alle kan få adgang til informationen, har jeg tilføjet et link til opslaget. Du kan tage et billede og indtaste linket i din browser.<br>Du kan også tilmelde dig til min nyhedsmail, hvis du hellere vil have en mail, når der er nyt</p>
-<p>Lad os sammen arbejde for mere gennemsigtighed i vores ejerforening.</p>
+<div class="content-container">
+	<div class="main-content">
+		<div class="accordian-container">
+<!--
+			<div style="background-color: orange; padding: 10px;border-radius: 15px;">
+				<p>Ejerforeningen - ved bestyrelsen og administration - lever ikke op til god forvaltningsskik. Og det koster...</p>
+				<p>Tilmeld dig evt. til mit <a href="https://docs.google.com/forms/d/e/1FAIpQLSdUG5QADzVbVqw4QS5QE8B7qUpNlG60V4f9KdDPjwqAI9wAng/viewform" target="_blank">nyhedsbrev</a>.</p>
+			</div>
+-->
+			<p><h2>Indlæg, som burde overbevise enhver om, at intet er, som det burde være:</h2></p>
+			
+<!--	Indsigelser forbrugsregnskaber 2024 -->
+			<details id="post-4">
+				<summary>Indsigelser - forbrugsregnskaber 2024<span class="summarydate">(august 2025)</span><span class="arrow"></span></summary>
+				<div class="details-container">
+				<p  id="post-4-1"><b>Forbrugsregnskaberne for 2024 er helt uden kvalitet.</b></p>
+				<p><span style="background-color: #ff6666;display: inline-block;height: 48px;line-height: 24px;padding: 0px 8px;">Hvis du undlader at gøre indsigelse, accepterer du blindt at betale de <b>forkerte</b> beløb, en inkompetent leverandør dikterer.</span></p>
+				
+				<ol>
+				
+					<li><b>Vandregnskabet for 2024 (kr. 228.411,83)</b><br>
+					Ifølge vandregnskabet har der været et vandtab på 18 %, svarende til cirka 820.000 liter vand – eller omkring 40.000 kr. 
+					<p>Bestyrelsen har endnu <b>ikke</b> givet nogen forklaring på, hvordan dette betydelige tab er opstået. Det rejser <b>alvorlige spørgsmål</b> om både regnskabets troværdighed og den kontrol og godkendelse, det har været underlagt</p>
+<h4 style="padding: 0px;margin-bottom: 0px;color: red;">Konstaterede fejl og uregelmæssigheder</h4>
+					<p></p>
+					<ul>
+					<li><b>Beboerne betaler 18% højere literpris for vand, end ejerforeningen faktisk har betalt til HTK Forsyning A/S.</b> 
+					Det er <b>ikke</b> tilladt at viderefakturere væsentlig og udokumenteret overpris til beboerne.</li>
+					<li><b>Beboerne betaler 52% højere literpris for vand end foregående år.</b>
+					<br>Et forhold, der rejser alvorlige spørgsmål om både regnskabsføringen og den foretagne kontrol.</li>
+					<li><b>Vaskerierne betaler en lavere literpris end ejerforeningen betaler til HTK Forsyning A/S.</b>
+					<br>Beboerne opkræves 19,5% højere literpris for vand end vaskerierne.
+					<p>Det tyder på, at bestyrelsen har besluttet at yde støtte til vaskerierne – en udgift, der så skal bæres af beboerne. </p>
+					<p>Hverken bestyrelsen eller administrator har hjemmel til at yde økonomisk støtte til hverken eget eller naboforeningernes vaskerier.</p></li>
+					</li>
+					</ul>
+					<p></p>
+					<p style="padding-bottom: 2px; padding-top: 0px;"><a class="button-link" href="https://drive.google.com/file/d/1_gnGt36K2625iq6iaNAsv6NaAC5tY75g/view?usp=sharing" target="_blank">Min indsigelse</a></p>
+					</li>
+					<p></p>
+					
+					<li id="post-4-2"><b>Varmeregnskabet for 2024</b>
+					<h4 style="padding: 0px;margin-bottom: 0px;">Udgiftsopgørelsen (kr. 849.383,08)</h4>
+					<p>For <b>andet år i træk</b> er der fejl i opgørelsen af de udgifter, som bliver opkrævet via varmeregnskabet.</p>
+					<p>Det er <b>CEJ's ansvar</b> at udarbejde en korrekt udgiftsopgørelse for varmeregnskabet. Det er hele grundlaget for en korrekt fordeling af udgifterne.</p>
+<h4 style="padding: 0px;margin-bottom: 0px;color: red;">Konstaterede fejl og uregelmæssigheder i udgiftsopgørelsen</h4>
+<p></p>
+					<ul>
+					<li>CEJ har endnu en gang undladt at efterleve generalforsamlingens beslutning om, at 15 % af ejerforeningens lønomkostninger skal fordeles via varmeregnskabet.
+					<p> Varmeregnskabets lønomkostninger er opgjort til kr. 38.704,34, hvor det korrekte beløb ville være ca. kr. 51.600. Det betyder, at to tredjedele af ejerforeningens medlemmer bliver opkrævet mere end besluttet.</p></li>
+					<li>Selv om der i marts 2025 blev udsendt et korrigeret regnskab for 2023, har man tilsyneladende efterfølgende identificeret en yderligere række fejlopkrævninger på i alt 4.477,32 kr., som man nu forsøger at overføre til 2024-regnskabet.</p></li>
+					<li>Vedligeholdelseudgifterne forekommer ca. kr. 10.000 højere end umiddelbart forventet.</li>
+					</ul>
+					
+					<h4 style="padding: 0px;margin-bottom: 0px;">Udgiftsfordelingen</h4>
+					<p>Ovenstående udgifter fordeles blandt beboerne efter nogle fordelingsnøgler, som <b>kun</b> generalforsamlingen har kompetence til at ændre.</p>
+					<h4 style="padding: 0px;margin-bottom: 0px;color: blue;">Generel info</h4>
+					<p>Overordnet fordeles <b>fjernvarmeudgiften</b> således</p>
+					<ul>
+					<li><b><span style="color: blue;">Opvarmning af rum</span></b>
+						<ul>
+							<li>64% går til opvarmning af rum. Beløbet skal fordeles efter det reelle individuelle forbrug. <p>Det individuelle forbrug måles for hovedpartens vedkommende af radiatormålere. <b>Udsat beliggende lejligheders</b> forbrug reduceres pga. forøget varmetab. Forbruget på <b>gulvvarme uden målere</b> skønnes.</p></li>
+							<li>16% går til varmetab ved opvarmning af rum. Beløbet fordeles efter lejlighedens størrelse - fordelingstallet.</li>
+						</ul>
+					</li>
+					<li><b><span style="color: blue;">Opvarmning af vand</span></b>
+						<ul>
+							<li>12% går til opvarmning af vand. Beløbet skal fordeles efter det reelle individuelle forbrug.</li>
+							<li>8% går til varmetab ved det varme vand. Beløbet fordeles som en fast andel pr. lejlighed - haneandele.</li>
+						</ul>
+					</li>
+					</ul>
+					<p>Alle <b>øvrige udgifter</b> fordeles som en enhedspris pr. lejlighed - alle betaler det samme beløb.</p>
 
-  <div class="flex-container">
-    <div class="container-box">
-        <p>Hvordan har du det i dag?</p>
-        <a href="https://www.google.com" class="button">Klik her</a>
-    </div>
-    <div class="container-box">
-        <p>hej med dig</p>
-        <a href="https://www.google.com" class="button">Klik her</a>
-    </div>
-    <div class="container-box">
-        <p>hej med dig</p>
-        <a href="https://www.google.com" class="button">Klik her</a>
-    </div>
-  </div>
 
+					<h4 style="padding: 0px;margin-bottom: 0px;color: red;">Konstaterede fejl og uregelmæssigheder i udgiftsfordelingen</h4>
+					<p>Fejl i udgiftsfordelingen opstår, når opgørelsen af de individuelle forbrug er forkerte. Selvom det formelt er målerfirmaets ansvar at levere præcise målinger, overlades kontrollen i praksis til varmeleverandøren og forbrugerne selv. </p><p>Det påhviler derfor ejerforeningen – eventuelt gennem administrator – at sikre, at opgørelserne er korrekte. Svigter denne kontrol, bliver beboerne opkrævet fejlagtige beløb, hvilket undergraver tilliden til både regnskabet og foreningens forvaltning.</p>
+					
+					<h4 style="padding: 0px;margin-bottom: 0px;color: blue;">Korrektion for udsat beliggenhed</h4>
+					Bestyrelsen har tilsyneladende godkendt, at målerfirmaet - usagligt og i strid med indgået aftale - har nedsat varmeudgiften for lejligheder med udsat beliggenhed med yderligere 0-17% svarende til anslået kr. 40 - 50.000. 
+					<p>Den ekstra rabat til de udsatte lejligheder betales af alle som en overpris på varme -> højt forbrug = urimelig høj udgift.</p>
+					<p>Hverken bestyrelse, administrator eller ista har kompetence til at ændre den økonomiske byrdefordeling i ejerforeningen.</p>
+
+					<h4 style="padding: 0px;margin-bottom: 0px;color: blue;">Gulvvarme</h4>
+					Bestyrelsen har tilsyneladende godkendt, at gulvvarmeanlæg får en usaglig rabat på 60-70% svarende til ca. kr. 18.000. 
+					<p>Oversat betyder det, at ejere af gulvvarmeanlæg får det næsten gratis. Resten betaler ca. kr. 18.000 ekstra som en overpris på varme. Dermed har bestyrelsen godkendt en usaglig ændring af den økonomiske byrdefordeling blandt medlemmerne. </p>
+
+					<h4 style="padding: 0px;margin-bottom: 0px;color: blue;">Opvarmning af varmt vand</h4>
+					Det fremgår af regnskabet, at prisen for opvarmning af varmt vand er steget med 28,5%, hvor fjernvarmeudgiften kun er steget 4,9%.  
+					<p>Oversat betyder det, at nogle får det varme vand gratis. Resten betaler knap 25% ekstra som en overpris på opvarmning af vand. Dermed har bestyrelsen godkendt en usaglig ændring af den økonomiske byrdefordeling blandt medlemmerne. </p>
+					<p></p>
+
+					<p style="padding-bottom: 2px; padding-top: 0px;"><a class="button-link" href="https://drive.google.com/file/d/1YKPxsSuu9YqlzlE48TTI72JVG2QEgTfn/view?usp=sharing" target="_blank">Min indsigelse</a></p>
+					</li>
+				</ol>
+				
+				<p><strong>Har du stadig tillid til dine forbrugsregnskaber?</strong></p>
+				</div>
+			</details>
+
+<!--	Mine forslag til den ordinære generalforsamling 2025 -->
+			<details id="post-4">
+				<summary>Mine forslag til den ordinære generalforsamling 2025<span class="summarydate">(15. august 2025)</span><span class="arrow"></span></summary>
+				<div class="details-container">
+				<ol>
+					<li style="padding-bottom: 40px;" id="forslag-1"><b>Forbrugsregnskaberne for både 2023 og 2024 skal kontrolleres og korrigeres</b>
+						<p>Ejerforeningen har for andet år i træk udsendt forbrugsregnskaber, der indeholder <b>alvorlige og åbenlyse fejl</b>. Efter min vurdering er fejlene så væsentlige, at regnskaberne bør kontrolleres, og de økonomiske konsekvenser for de berørte beboere bør korrigeres.</p>
+						<p>Bestyrelsen har bl.a. godkendt følgende forhold, som er <b>i strid med gældende regler og praksis</b>:
+						<ul>
+						<li><b>2023:</b> Beboerne er samlet opkrævet for mere vand, end ejerforeningen har købt. Fejlen forstærkes i det korrigerede vandregnskab udsendt sidst i marts 2025. Resultatet er, at nogle beboere betaler for vand, de ikke har brugt – hvilket er i strid med både lovgivning og almindelig retfærdighed.</li>
+						<li><b>2023:</b> Der er ikke overensstemmelse mellem de indtægter, der er bogført fra vaskerierne, og de beløb ejerforeningen har opkrævet. Dette rejser alvorlig tvivl om regnskabets rigtighed og indikerer økonomiske uregelmæssigheder.</li>
+						<li><b>2023:</b> Der er ikke overensstemmelse mellem det varmevandforbrug, der er opgjort i vandregnskabet, og den mængde vand, der ifølge varmeregnskabet er blevet opvarmet. Dette er både teknisk og juridisk uholdbart.</li>
+						<li><b>2023:</b> Der er en markant uoverensstemmelse mellem den lønudgift, der fremgår af varmeregnskabet, og det beløb, der er overført fra driftsregnskabet. Forskellen er ikke forklaret, og der foreligger ingen dokumentation for, hvordan beløbene hænger sammen. Det vækker alvorlig mistanke om økonomiske uregelmæssigheder og giver anledning til at stille spørgsmålstegn ved regnskabets pålidelighed.</li>
+						<li><b>2024:</b> Beboerne betaler en væsentligt højere literpris for vand, end ejerforeningen faktisk har betalt til leverandøren. Det er ikke tilladt at viderefakturere væsentlig og udokumenteret overpris til beboerne.</li>
+						<li><b>2024:</b> Beboerne opkræves en markant højere literpris for vand end vaskerierne, hvilket medfører en skæv fordeling af udgifterne. Konsekvensen er, at beboerne indirekte betaler en del af vaskeriernes vandforbrug – herunder også det forbrug, der stammer fra naboforeningernes brug af vaskerierne.</li>
+						<li><b>2024:</b> Der er en væsentlig afvigelse mellem den lønudgift, der er opgjort i varmeregnskabet, og generalforsamlingens beslutning om, at 15 % af ejerforeningens samlede lønomkostninger skal fordeles via varmeregnskabet. Dette indikerer enten fejl i beregningen eller en ændring af fordelingsprincipperne, som ikke er godkendt af generalforsamlingen.</li>
+						<li><b>2024:</b> Prisen for opvarmning af varmt vand er markant højere end i 2023, uden at der er redegjort for årsagen. Det tyder på fejl i beregningerne eller i de underliggende fordelingsprincipper.</li>
+						<li><b>2023–2024:</b> Fordelingsprincipperne er ændret uden godkendelse fra generalforsamlingen. Eksempelvis er der givet væsentlige rabatter til boliger med gulvvarme og "udsat beliggenhed" – uden mandat. Ændringer i fordelingsnøgler kræver godkendelse af generalforsamlingen, og den mangler.</li>
+						</ul></p>
+						<p>Det er uacceptabelt, at foreningen gentagne gange udsender regnskaber med fejl, der både er væsentlige og lette at identificere. Det underminerer tilliden til administrationen, til bestyrelsens kontrol og til regnskabernes retvisende karakter. Derfor bør generalforsamlingen træffe beslutning om at få regnskaberne kontrolleret og genberegnet – og at fremtidige regnskaber underlægges bedre kontrol, inden de udsendes.</p>
+						<p style="padding-bottom: 2px; padding-top: 0px;"><a class="button-link" href="https://drive.google.com/file/d/1uMo-HSSTyrsV0_LlcjAX6Ryu418haC-e/view?usp=sharing" target="_blank">Læs forslag</a></p>
+					</li>
+
+					<li><b>Vedtægtsændringer</b>
+						<p>Som medlem af foreningen har jeg med stigende bekymring observeret en udvikling, hvor bestyrelsens og administrationens praksis i stigende grad bevæger sig væk fra en gennemsigtig, inddragende og demokratisk tilgang.</p>
+						<p>For at sikre, at foreningen fortsat ledes i overensstemmelse med medlemmernes interesser og foreningens grundlæggende værdier, finder jeg det nødvendigt at præcisere visse dele af vedtægterne. Disse ændringer har til formål at styrke medlemsdemokratiet, tydeliggøre ansvar og sikre en mere åben og balanceret beslutningsproces i foreningen.</p>
+						<p>Jeg foreslår ændringer til følgende bestemmelser i vedtægten:
+						<ol>
+							<li style="padding-bottom:10px;" id="forslag-2"><b>§6 - Generalforsamlingen skal afholdes i lokalområdet.</b>
+							<p>Administratorens forsøg på i efteråret 2024 at afholde generalforsamlingen inde midt i København skal <b>ikke</b> kunne gentage sig.</p>
+							<p><a class="button-link" href="https://drive.google.com/file/d/1U1vkBxbJ-QD5rbPcsimnpDh6a_6_qrX-/edit?disco=AAABqkuBzoU" target="_blank">Læs forslag</a></p></li>
+
+							<li style="padding-bottom:10px;" id="forslag-3"><b>§7 - Fuldmagtgivers individuelle stemmeret kan ikke begrænses</b>
+								<p>Administrators udsendelse af en <b>vildledende</b> fuldmagtsblanket, der begrænser medlemmernes mulighed for at give gyldige og instruksgivende fuldmagter, er i sig selv <b>en påvirkning af afstemningsresultatet</b> – længe før mødet begynder. </p>
+								<p>Det kan medføre, at beslutninger truffet på mødet er <b>ugyldige</b>.</p>
+								<p><a class="button-link" href="https://drive.google.com/file/d/1U1vkBxbJ-QD5rbPcsimnpDh6a_6_qrX-/edit?disco=AAABqkuBzoc" target="_blank">Læs forslag</a>&nbsp;&nbsp;
+								<a class="button-link" href="https://drive.google.com/file/d/1aav0nJfplzhbcnbz-kwywiLdx6WG7eGw/view?usp=sharing" target="_blank">Se ulovlig fuldmagtsblanket</a>&nbsp;&nbsp;
+								<a class="button-link" style="padding: 5px 10px;" href="https://drive.google.com/file/d/1FqR-HbZjat414_JYqpcAwrKqjDBcKjcg/view" target="_blank">Brug lovlig fuldmagtsblanket</a></li>
+
+
+							<li style="padding-bottom:10px;" id="forslag-4"><b>§14 - Forbrugsregnskab skal udsendes i rimelig tid efter regnskabsårets afslutning</b>
+								<p>Det er <b>ikke</b> rimeligt, at medlemmer og beboere først modtager væsentlige økonomiske opgørelser længe efter regnskabsårets afslutning.</p>
+								<p>Sammenlignet med en situation, hvor generalforsamling, regnskabsgodkendelse og budgetvedtagelse først finder sted 8–15 måneder efter regnskabsårets afslutning, bliver det tydeligt, at en så sen afrapportering er uhensigtsmæssig og uden mening – særligt hvis regnskabsåret allerede er afsluttet eller næsten afsluttet, når opgørelserne udsendes.</p>
+								<p>Der er <b>ingen saglig grund</b> til, at forbrugsregnskaber <b>ikke</b> kan udarbejdes inden for 3 måneder. Men da der benyttes eksterne leverandører, er en vis fleksibilitet nødvendig. Derfor foreslår jeg, at der i vedtægterne indføres en frist på maksimalt 5 måneder for udsendelse af forbrugsregnskaber efter regnskabsårets afslutning.</p>
+								<p><a class="button-link" href="https://drive.google.com/file/d/1U1vkBxbJ-QD5rbPcsimnpDh6a_6_qrX-/edit?disco=AAABqkuBzok" target="_blank">Læs forslag</a></p></li>
+
+							<li style="padding-bottom:10px;" id="forslag-5"><b>§15 - Medlemmers ret til indsigt i regnskabsmateriale</b>
+								<p>Det forekommer tydeligt, at administratoren ønsker at fastholde en høj grad af kontrol med foreningens økonomiske og administrative forhold. Ét af de midler, der anvendes, er at henvise til en vurdering af, "at indsigt i bilag er i strid med GDPR". Dette fremstår som et klart <b>misbrug af persondataforordningen</b> med det formål at begrænse medlemmernes indsigt og ret til kontrol.</p>
+								<p>Samtidig afviser administrator, at lejelovens regler om lejers indsigt i regnskabsmateriale kan anvendes analogt i ejerforeningens sammenhæng – endnu en "vurdering", som <b>ikke</b> hviler på nogen kendt lovgivning eller retspraksis, men snarere på et ønske om at undgå gennemsigtighed.</p>
+								<p>Disse subjektive vurderinger kan kun få gennemslag, hvis de møder en bestyrelse, der <b>ikke</b> har tilstrækkelig indsigt i foreningsret, økonomi og gældende regler – og dermed lettere kan påvirkes af administrationens udlægninger.</p>
+								<p>Derfor bør generalforsamlingen tage ansvar og tydeligt markere, at en sådan <b>lukkethed ikke er acceptabel</b>. En vedtægtsændring bør fastslå, at gennemsigtighed er en grundlæggende værdi i foreningen, og at nægtelse af indsigt <b>ikke må ske</b> på baggrund af subjektive og usaglige vurderinger. Det er den bedste måde at beskytte foreningen mod både fejl, magtmisbrug og risikoen for økonomiske uregelmæssigheder.</p>
+								<p><a class="button-link" href="https://drive.google.com/file/d/1U1vkBxbJ-QD5rbPcsimnpDh6a_6_qrX-/edit?disco=AAABqkuBzoo" target="_blank">Læs forslag</a></p></li>
+						</ol>
+					</li>
+				</ol></p>
+				</div>
+			</details>
+
+<!-- Forstå vandregnskabet -->
+			<details id="post-3">
+				<summary>Forstå vandregnskabet<span class="summarydate">(1. maj 2025)</span><span class="arrow"></span></summary>
+				<div class="details-container">
+				<p><b>Vandregnskabet skal udarbejdes efter et ganske enkelt princip:</b><br>Udgifter, der har der været til HTK Forsyning A/S, skal fordeles mellem beboere i forhold til deres forbrug.</p><p>Problemer opstår, når enten udgifterne til HTK Forsyning A/S minus indtægter fra vaskerier er forkerte - eller det målte forbrug hos beboerne er forkert.</p><p>Desværre viser det sig, at <b>både</b> udgiftsopgørelsen fra CEJ <b>og </b> opgørelsen af forbruget fra ista er forkerte.</p>
+				<p></p>
+				<p style="padding-bottom: 2px; padding-top: 0px;"><a class="button-link" href="https://drive.google.com/file/d/1uKTLezWmuDdWK_arq-uoWKs2486S7eUx/view?usp=sharing" target="_blank">Læs mere</a></p>
+				<p><strong>Har du stadig tillid til dine forbrugsregnskaber?</strong></p>
+				</div>
+			</details>
+
+<!-- Eksempel: Typisk fejlopkrævning -->	
+			<details id="post-2">
+				<summary>Eksempel: Typisk fejlopkrævning<span class="summarydate">(24. april 2025)</span><span class="arrow"></span></summary>
+				<div class="details-container">
+				<p>En ældre beboer, som har tillid til sine forbrugsregnskaber, blev bl.a. opkrævet for opvarmning af ca. 11 m3 vand på trods af, at vandmålerens forbrug if. vandregnskabet var 0 m3.<br>Fejlen betyder, at hun opkræves mere end 400 kr. for opvarmning af noget vand, som hun aldrig har brugt.</p>
+				<p>Hverken CEJ eller ista ønsker at forklare, hvorfor der <b>ikke</b> er overensstemmelse mellem målt forbrug af varmt vand i vandregnskabet og den mængde vand, der skal betales for opvarmning af.</p>
+				<p style="padding-bottom: 2px; padding-top: 0px;"><a class="button-link" href="https://drive.google.com/file/d/10cuw4u6nQJ3uh5didhN-eHHA-oE_Werl/view?usp=drive_link" target="_blank">Læs mere</a></p>
+				<p><strong>Har du stadig tillid til dine forbrugsregnskaber?</strong></p>
+				</div>
+			</details>
+
+<!-- Korrigerede forbrugsregnskaber 2023 -->			
+			<details id="post-1">
+				<summary>Korrigerede forbrugsregnskaber 2023<span class="summarydate">(19. april 2025)</span><span class="arrow"></span></summary>
+				<div class="details-container">
+				<p>Du har netop modtaget korrigerede forbrugsregnskaber uden forklaringer eller beklagelser.</p>
+				<p><b>Hvilke ændringer er der foretaget?</b>
+				<ul>
+					<li>Der er opkrævet yderligere 485 m3 vand - nu er der på forunderlig vis målt et forbrug, som overstiger den købte mængde med 579m3</li>
+					<li>Der er opvarmet yderligere 181 m3 vand - størstedelen er ikke forbrugt iht. vandregnskabet</li>
+					<li>Der er kommet en ny udgiftspost - anlægsbidrag - og fjernvarmeudgiften er tilsvarende nedsat</li>
+					<li>Alle fik en yderligere rabat på vand - ingen forstår hvorfor</li>
+					<li>Alle fik en yderligere rabat på opvarmning af vand - ingen forstår hvorfor</li>
+				</ul></p>
+				<p><b>Hvilke fejl er ikke adresseret?</b>
+				<ul>
+					<li>Hvorfor er der opkrævet meget mere vand end ejerforeningen har købt</li>
+					<li>Hvorfor beboerne betaler mindre for vandet end ejerforeningen betaler til HTK Forsyning A/S</li>
+					<li>Hvorfor er der uoverstemmelse mellem det målte varme vand og den mængde der opvarmes i varmeregnskabet</li>
+					<li>Hvorfor er der uoverensstemmelse mellem varmeregnskabets lønudgifter og lønandel i driftsregnskabet</li>
+					<li>Hvorfor er der uoverensstemmelse mellem opkrævede vandbidrag i vaskerierne og varmeregnskabets reduktion af vandudgifterne</li>
+					<li>Hvorfor er varmeudgifter til gulvvarme reduceret med 60-70% og regningen sendt til andre beboere</li>
+					<li>Hvorfor reduceres nogle lejligheders varmeudgifter og regningen sendes til øvrige beboere</li>
+					<li>mv.</li>
+				</ul></p>
+				<p style="padding-bottom: 2px; padding-top: 0px;"><a class="button-link" href="https://drive.google.com/file/d/1oBNoZVo6RdWw7T9F2AMb71cKBxh-Hufo/view?usp=sharing" target="_blank">Læs mere</a></p>
+				<p><strong>Har du stadig tillid til dine forbrugsregnskaber?</strong></p>
+				</div>
+			</details>
+
+
+		</div>
+	</div>
+    	<div class="sidebar">
+        	<h3>Seneste indlæg - peg og klik</h3>
+        	<ul>
+            	<li>Indsigelser - forbrugsregnskaber 2024</li>
+			<ol>
+			<li><a href="#post-4-1">Vandregnskabet</a></li>
+			<li><a href="#post-4-2">Varmeregnskabet</a></li>
+			</ol>
+		</li>
+            	<li>Mine forslag til generalforsamlingen</li>
+			<ol>
+			<li><a href="#forslag-1">Forbrugsregnskaberne for både 2023 og 2024 skal kontrolleres og korrigeres</a></li>
+			<li><a href="#forslag-2">§6 - GF skal afholdes i lokalområdet</a></li>
+			<li><a href="#forslag-3">§7 - Stemmeret ukrænkelig</a></li>
+			<li><a href="#forslag-4">§14 - Frist for udsendelse forbrugsregnskab</a></li>
+			<li><a href="#forslag-5">§15 - Ret til indsigt</a></li>
+			</ol>
+            	</li>
+            	<li><a href="#post-3">Forstå vandregnskabet</a></li>
+            	<li><a href="#post-2">Eksempel: Typisk fejlopkrævning</a></li>
+            	<li><a href="#post-1">Korrigerede forbrugsregnskaber 2023</a></li>
+            	</ul>
+    	</div>
+</div>
+
+    <script>
+        window.onload = function() {
+            document.querySelector('.content-container').style.display = 'flex';
+        };
+
+document.querySelectorAll('.sidebar a').forEach(link => {
+  link.addEventListener('click', function(event) {
+    // Få ID'en fra linket (fx. '#post-1')
+    const targetId = this.getAttribute('href');
+    const targetElement = document.querySelector(targetId);
+
+    if (targetElement && targetElement.tagName === 'DETAILS') {
+      // Åbn kun hvis det er et <details> element
+      targetElement.open = true;
+    }
+  });
+});
+    </script>
 </body>
 
 </html>
-
 
